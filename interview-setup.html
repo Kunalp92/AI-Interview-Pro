@@ -1,0 +1,605 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Start Interview | AI Interview Pro</title>
+    <!-- Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Poppins:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <!-- Icons -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        :root {
+            /* Color palette */
+            --primary: #4361ee;
+            --primary-dark: #3a56d4;
+            --secondary: #3f37c9;
+            --accent: #4895ef;
+            --dark: #1a1a2e;
+            --light: #f8f9fa;
+            --gray: #6c757d;
+            --light-gray: #e9ecef;
+            --success: #4cc9f0;
+            --warning: #f72585;
+            
+            /* Typography */
+            --font-main: 'Inter', sans-serif;
+            --font-heading: 'Poppins', sans-serif;
+            
+            /* Spacing */
+            --space-xs: 0.5rem;
+            --space-sm: 1rem;
+            --space-md: 1.5rem;
+            --space-lg: 2rem;
+            --space-xl: 3rem;
+            
+            /* Shadows */
+            --shadow-sm: 0 1px 3px rgba(0,0,0,0.12);
+            --shadow-md: 0 4px 6px rgba(0,0,0,0.1);
+            --shadow-lg: 0 10px 25px rgba(0,0,0,0.1);
+            
+            /* Border radius */
+            --radius-sm: 4px;
+            --radius-md: 8px;
+            --radius-lg: 12px;
+            --radius-full: 9999px;
+            
+            /* Transitions */
+            --transition: all 0.3s cubic-bezier(0.25, 0.8, 0.25, 1);
+        }
+        
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        
+        body {
+            font-family: var(--font-main);
+            color: var(--dark);
+            background-color: var(--light);
+            line-height: 1.6;
+        }
+        
+        /* Typography */
+        h1, h2, h3, h4, h5, h6 {
+            font-family: var(--font-heading);
+            font-weight: 600;
+            line-height: 1.2;
+            margin-bottom: var(--space-md);
+        }
+        
+        h1 { font-size: 2.5rem; }
+        h2 { font-size: 2rem; }
+        h3 { font-size: 1.75rem; }
+        h4 { font-size: 1.5rem; }
+        
+        p {
+            margin-bottom: var(--space-md);
+            color: var(--gray);
+        }
+        
+        a {
+            text-decoration: none;
+            color: inherit;
+            transition: var(--transition);
+        }
+        
+        /* Layout */
+        .container {
+            width: 100%;
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 var(--space-md);
+        }
+        
+        section {
+            padding: var(--space-xl) 0;
+        }
+        
+        /* Buttons */
+        .btn {
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            padding: var(--space-sm) var(--space-lg);
+            border-radius: var(--radius-full);
+            font-weight: 500;
+            font-size: 1rem;
+            cursor: pointer;
+            transition: var(--transition);
+            border: none;
+            white-space: nowrap;
+        }
+        
+        .btn-primary {
+            background-color: var(--primary);
+            color: white;
+            box-shadow: 0 4px 14px rgba(67, 97, 238, 0.3);
+        }
+        
+        .btn-primary:hover {
+            background-color: var(--primary-dark);
+            transform: translateY(-2px);
+            box-shadow: 0 6px 20px rgba(67, 97, 238, 0.4);
+        }
+        
+        .btn-secondary {
+            background-color: white;
+            color: var(--primary);
+            border: 1px solid var(--primary);
+        }
+        
+        .btn-secondary:hover {
+            background-color: rgba(67, 97, 238, 0.05);
+            transform: translateY(-2px);
+        }
+        
+        .btn-icon {
+            margin-right: var(--space-xs);
+        }
+        
+        /* Header */
+        header {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            background-color: white;
+            box-shadow: var(--shadow-sm);
+            z-index: 1000;
+            padding: var(--space-sm) 0;
+        }
+        
+        .navbar {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+        
+        .logo {
+            display: flex;
+            align-items: center;
+            font-weight: 700;
+            font-size: 1.25rem;
+            color: var(--dark);
+        }
+        
+        .logo-icon {
+            color: var(--primary);
+            margin-right: var(--space-xs);
+            font-size: 1.5rem;
+        }
+        
+        .nav-links {
+            display: flex;
+            list-style: none;
+        }
+        
+        .nav-links li {
+            margin-left: var(--space-lg);
+        }
+        
+        .nav-links a {
+            font-weight: 500;
+            color: var(--dark);
+            position: relative;
+            padding: var(--space-xs) 0;
+        }
+        
+        .nav-links a::after {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            width: 0;
+            height: 2px;
+            background-color: var(--primary);
+            transition: var(--transition);
+        }
+        
+        .nav-links a:hover::after {
+            width: 100%;
+        }
+        
+        .nav-links a:hover {
+            color: var(--primary);
+        }
+        
+        .mobile-menu-btn {
+            display: none;
+            background: none;
+            border: none;
+            font-size: 1.5rem;
+            color: var(--dark);
+            cursor: pointer;
+        }
+        
+        /* Interview Setup Section */
+        .interview-setup {
+            padding-top: 6rem;
+            min-height: 100vh;
+            display: flex;
+            align-items: center;
+            background: linear-gradient(135deg, #f5f7ff 0%, #e6ebfa 100%);
+        }
+        
+        .setup-container {
+            display: flex;
+            flex-wrap: wrap;
+            gap: var(--space-xl);
+            align-items: center;
+            justify-content: center;
+        }
+        
+        .setup-content {
+            flex: 1;
+            min-width: 300px;
+            max-width: 500px;
+        }
+        
+        .setup-title {
+            margin-bottom: var(--space-sm);
+            color: var(--primary);
+        }
+        
+        .setup-subtitle {
+            margin-bottom: var(--space-lg);
+        }
+        
+        .setup-image {
+            flex: 1;
+            min-width: 300px;
+            max-width: 500px;
+        }
+        
+        .setup-image img {
+            width: 100%;
+            border-radius: var(--radius-lg);
+            box-shadow: var(--shadow-lg);
+            animation: float 6s ease-in-out infinite;
+        }
+        
+        @keyframes float {
+            0% { transform: translateY(0); }
+            50% { transform: translateY(-20px); }
+            100% { transform: translateY(0); }
+        }
+        
+        /* Setup Form */
+        .setup-form {
+            background-color: white;
+            border-radius: var(--radius-md);
+            padding: var(--space-xl);
+            box-shadow: var(--shadow-md);
+            margin-top: var(--space-lg);
+        }
+        
+        .form-group {
+            margin-bottom: var(--space-lg);
+        }
+        
+        .form-label {
+            display: block;
+            margin-bottom: var(--space-sm);
+            font-weight: 500;
+            color: var(--dark);
+        }
+        
+        .form-control {
+            width: 100%;
+            padding: var(--space-sm) var(--space-md);
+            border: 1px solid var(--light-gray);
+            border-radius: var(--radius-sm);
+            font-family: var(--font-main);
+            font-size: 1rem;
+            transition: var(--transition);
+        }
+        
+        .form-control:focus {
+            outline: none;
+            border-color: var(--primary);
+            box-shadow: 0 0 0 3px rgba(67, 97, 238, 0.1);
+        }
+        
+        select.form-control {
+            appearance: none;
+            background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='16' height='16' fill='%236c757d' viewBox='0 0 16 16'%3E%3Cpath d='M7.247 11.14 2.451 5.658C1.885 5.013 2.345 4 3.204 4h9.592a1 1 0 0 1 .753 1.659l-4.796 5.48a1 1 0 0 1-1.506 0z'/%3E%3C/svg%3E");
+            background-repeat: no-repeat;
+            background-position: right var(--space-md) center;
+            background-size: 16px 12px;
+        }
+        
+        .radio-group {
+            display: flex;
+            gap: var(--space-md);
+            flex-wrap: wrap;
+        }
+        
+        .radio-option {
+            flex: 1;
+            min-width: 120px;
+        }
+        
+        .radio-input {
+            position: absolute;
+            opacity: 0;
+        }
+        
+        .radio-label {
+            display: block;
+            padding: var(--space-md);
+            border: 1px solid var(--light-gray);
+            border-radius: var(--radius-sm);
+            text-align: center;
+            cursor: pointer;
+            transition: var(--transition);
+        }
+        
+        .radio-input:checked + .radio-label {
+            border-color: var(--primary);
+            background-color: rgba(67, 97, 238, 0.05);
+            box-shadow: 0 0 0 1px var(--primary);
+        }
+        
+        .radio-input:focus + .radio-label {
+            box-shadow: 0 0 0 3px rgba(67, 97, 238, 0.1);
+        }
+        
+        .radio-title {
+            font-weight: 500;
+            margin-bottom: var(--space-xs);
+        }
+        
+        .radio-description {
+            font-size: 0.85rem;
+            color: var(--gray);
+        }
+        
+        .form-footer {
+            margin-top: var(--space-xl);
+            text-align: center;
+        }
+        
+        /* Responsive Design */
+        @media (max-width: 768px) {
+            h1 { font-size: 2rem; }
+            h2 { font-size: 1.75rem; }
+            
+            .mobile-menu-btn {
+                display: block;
+            }
+            
+            .nav-links {
+                position: fixed;
+                top: 70px;
+                left: -100%;
+                width: 100%;
+                height: calc(100vh - 70px);
+                background-color: white;
+                flex-direction: column;
+                align-items: center;
+                padding: var(--space-xl) 0;
+                transition: var(--transition);
+                box-shadow: var(--shadow-md);
+            }
+            
+            .nav-links.active {
+                left: 0;
+            }
+            
+            .nav-links li {
+                margin: var(--space-sm) 0;
+            }
+            
+            .setup-container {
+                flex-direction: column;
+            }
+            
+            .setup-content {
+                order: 2;
+            }
+            
+            .setup-image {
+                order: 1;
+            }
+            
+            .radio-group {
+                flex-direction: column;
+                gap: var(--space-sm);
+            }
+            
+            .radio-option {
+                min-width: 100%;
+            }
+        }
+        
+        @media (max-width: 576px) {
+            .interview-setup {
+                padding-top: 5rem;
+            }
+            
+            .setup-form {
+                padding: var(--space-lg);
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Header -->
+    <header>
+        <div class="container">
+            <nav class="navbar">
+                <a href="index.html" class="logo">
+                    <span class="logo-icon"><i class="fas fa-robot"></i></span>
+                    <span>AI Interview Pro</span>
+                </a>
+                
+                <ul class="nav-links">
+                    <li><a href="index.html">Home</a></li>
+                    <li><a href="index.html#features">Features</a></li>
+                    <li><a href="index.html#how-it-works">How It Works</a></li>
+                    <li><a href="index.html#testimonials">Testimonials</a></li>
+                    <li><a href="#">Pricing</a></li>
+                </ul>
+                
+                <div class="auth-buttons">
+                    <a href="login.html" class="btn btn-secondary">Login</a>
+                    <a href="free-trial.html" class="btn btn-primary">Sign Up</a>
+                </div>
+                
+                <button class="mobile-menu-btn">
+                    <i class="fas fa-bars"></i>
+                </button>
+            </nav>
+        </div>
+    </header>
+
+    <!-- Interview Setup Section -->
+    <section class="interview-setup">
+        <div class="container">
+            <div class="setup-container">
+                <div class="setup-content">
+                    <h1 class="setup-title">Start Your AI Interview</h1>
+                    <p class="setup-subtitle">
+                        Customize your mock interview experience by selecting your target role, difficulty level, 
+                        and duration to get the most relevant practice.
+                    </p>
+                    
+                    <form class="setup-form" id="interviewForm">
+                        <div class="form-group">
+                            <label for="interviewRole" class="form-label">Select Interview Role</label>
+                            <select id="interviewRole" class="form-control" required>
+                                <option value="">Choose your target role</option>
+                                <option value="software-engineer">Software Engineer</option>
+                                <option value="frontend-engineer">Frontend Engineer</option>
+                                <option value="backend-engineer">Backend Engineer</option>
+                                <option value="fullstack-engineer">Fullstack Engineer</option>
+                                <option value="data-scientist">Data Scientist</option>
+                                <option value="product-manager">Product Manager</option>
+                                <option value="ux-designer">UX Designer</option>
+                                <option value="devops-engineer">DevOps Engineer</option>
+                                <option value="qa-engineer">QA Engineer</option>
+                                <option value="business-analyst">Business Analyst</option>
+                            </select>
+                        </div>
+                        
+                        <div class="form-group">
+                            <label class="form-label">Select Difficulty Level</label>
+                            <div class="radio-group">
+                                <div class="radio-option">
+                                    <input type="radio" id="difficultyBeginner" name="difficulty" value="beginner" class="radio-input" required>
+                                    <label for="difficultyBeginner" class="radio-label">
+                                        <span class="radio-title">Beginner</span>
+                                        <span class="radio-description">Entry-level questions</span>
+                                    </label>
+                                </div>
+                                
+                                <div class="radio-option">
+                                    <input type="radio" id="difficultyIntermediate" name="difficulty" value="intermediate" class="radio-input">
+                                    <label for="difficultyIntermediate" class="radio-label">
+                                        <span class="radio-title">Intermediate</span>
+                                        <span class="radio-description">2-5 years experience</span>
+                                    </label>
+                                </div>
+                                
+                                <div class="radio-option">
+                                    <input type="radio" id="difficultyAdvanced" name="difficulty" value="advanced" class="radio-input">
+                                    <label for="difficultyAdvanced" class="radio-label">
+                                        <span class="radio-title">Advanced</span>
+                                        <span class="radio-description">Senior/Lead level</span>
+                                    </label>
+                                </div>
+                            </div>
+                        </div>
+                        
+                        <div class="form-group">
+                            <label class="form-label">Select Interview Duration</label>
+                            <div class="radio-group">
+                                <div class="radio-option">
+                                    <input type="radio" id="duration15" name="duration" value="15" class="radio-input" required>
+                                    <label for="duration15" class="radio-label">
+                                        <span class="radio-title">15 Minutes</span>
+                                        <span class="radio-description">5-7 questions</span>
+                                    </label>
+                                </div>
+                                
+                                <div class="radio-option">
+                                    <input type="radio" id="duration30" name="duration" value="30" class="radio-input">
+                                    <label for="duration30" class="radio-label">
+                                        <span class="radio-title">30 Minutes</span>
+                                        <span class="radio-description">10-12 questions</span>
+                                    </label>
+                                </div>
+                                
+                                <div class="radio-option">
+                                    <input type="radio" id="duration45" name="duration" value="45" class="radio-input">
+                                    <label for="duration45" class="radio-label">
+                                        <span class="radio-title">45 Minutes</span>
+                                        <span class="radio-description">Full interview</span>
+                                    </label>
+                                </div>
+                            </div>
+                        </div>
+                        
+                        <div class="form-group">
+                            <div class="form-check">
+                                <input type="checkbox" id="enableRecording" class="form-check-input">
+                                <label for="enableRecording" class="form-check-label">Enable video recording for facial expression analysis</label>
+                            </div>
+                        </div>
+                        
+                        <div class="form-footer">
+                            <button type="submit" class="btn btn-primary btn-lg">
+                                <i class="fas fa-play btn-icon"></i> Start Interview
+                            </button>
+                        </div>
+                    </form>
+                </div>
+                
+                <div class="setup-image">
+                    <img src="https://images.unsplash.com/photo-1551288049-bebda4e38f71?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1470&q=80" alt="AI Interview Simulation">
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <script>
+        // Mobile Menu Toggle
+        const mobileMenuBtn = document.querySelector('.mobile-menu-btn');
+        const navLinks = document.querySelector('.nav-links');
+        
+        mobileMenuBtn.addEventListener('click', () => {
+            navLinks.classList.toggle('active');
+            mobileMenuBtn.innerHTML = navLinks.classList.contains('active') 
+                ? '<i class="fas fa-times"></i>' 
+                : '<i class="fas fa-bars"></i>';
+        });
+        
+        // Form Submission
+        const interviewForm = document.getElementById('interviewForm');
+        
+        interviewForm.addEventListener('submit', (e) => {
+            e.preventDefault();
+            
+            // Get form values
+            const role = document.getElementById('interviewRole').value;
+            const difficulty = document.querySelector('input[name="difficulty"]:checked').value;
+            const duration = document.querySelector('input[name="duration"]:checked').value;
+            const enableRecording = document.getElementById('enableRecording').checked;
+            
+            // In a real app, you would:
+            // 1. Save these preferences
+            // 2. Redirect to the interview page with these parameters
+            // For now, we'll just show an alert
+            
+            alert(`Starting ${duration}-minute ${difficulty} level interview for ${role} role. Recording ${enableRecording ? 'enabled' : 'disabled'}. Redirecting to interview...`);
+            
+            // Redirect would look like:
+             window.location.href = `interview.html?role=${role}&difficulty=${difficulty}&duration=${duration}&record=${enableRecording}`;
+        });
+    </script>
+</body>
+</html>

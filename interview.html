@@ -1,0 +1,1013 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Interview Session | AI Interview Pro</title>
+    <!-- Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Poppins:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <!-- Icons -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <!-- FaceAPI -->
+    <script src="https://cdn.jsdelivr.net/npm/face-api.js@0.22.2/dist/face-api.min.js"></script>
+    <style>
+        :root {
+            /* Color palette */
+            --primary: #4361ee;
+            --primary-dark: #3a56d4;
+            --secondary: #3f37c9;
+            --accent: #4895ef;
+            --dark: #1a1a2e;
+            --light: #f8f9fa;
+            --gray: #6c757d;
+            --light-gray: #e9ecef;
+            --success: #4cc9f0;
+            --warning: #f72585;
+            --danger: #f72585;
+            
+            /* Typography */
+            --font-main: 'Inter', sans-serif;
+            --font-heading: 'Poppins', sans-serif;
+            
+            /* Spacing */
+            --space-xs: 0.5rem;
+            --space-sm: 1rem;
+            --space-md: 1.5rem;
+            --space-lg: 2rem;
+            --space-xl: 3rem;
+            
+            /* Shadows */
+            --shadow-sm: 0 1px 3px rgba(0,0,0,0.12);
+            --shadow-md: 0 4px 6px rgba(0,0,0,0.1);
+            --shadow-lg: 0 10px 25px rgba(0,0,0,0.1);
+            
+            /* Border radius */
+            --radius-sm: 4px;
+            --radius-md: 8px;
+            --radius-lg: 12px;
+            --radius-full: 9999px;
+            
+            /* Transitions */
+            --transition: all 0.3s cubic-bezier(0.25, 0.8, 0.25, 1);
+        }
+        
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        
+        body {
+            font-family: var(--font-main);
+            color: var(--dark);
+            background-color: var(--light);
+            line-height: 1.6;
+            overflow-x: hidden;
+        }
+        
+        /* Typography */
+        h1, h2, h3, h4, h5, h6 {
+            font-family: var(--font-heading);
+            font-weight: 600;
+            line-height: 1.2;
+            margin-bottom: var(--space-md);
+        }
+        
+        h1 { font-size: 2.5rem; }
+        h2 { font-size: 2rem; }
+        h3 { font-size: 1.75rem; }
+        h4 { font-size: 1.5rem; }
+        
+        p {
+            margin-bottom: var(--space-md);
+            color: var(--gray);
+        }
+        
+        a {
+            text-decoration: none;
+            color: inherit;
+            transition: var(--transition);
+        }
+        
+        /* Layout */
+        .container {
+            width: 100%;
+            max-width: 1800px;
+            margin: 0 auto;
+            padding: 0 var(--space-md);
+        }
+        
+        section {
+            padding: var(--space-xl) 0;
+        }
+        
+        /* Buttons */
+        .btn {
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            padding: var(--space-sm) var(--space-lg);
+            border-radius: var(--radius-full);
+            font-weight: 500;
+            font-size: 1rem;
+            cursor: pointer;
+            transition: var(--transition);
+            border: none;
+            white-space: nowrap;
+        }
+        
+        .btn-primary {
+            background-color: var(--primary);
+            color: white;
+            box-shadow: 0 4px 14px rgba(67, 97, 238, 0.3);
+        }
+        
+        .btn-primary:hover {
+            background-color: var(--primary-dark);
+            transform: translateY(-2px);
+            box-shadow: 0 6px 20px rgba(67, 97, 238, 0.4);
+        }
+        
+        .btn-secondary {
+            background-color: white;
+            color: var(--primary);
+            border: 1px solid var(--primary);
+        }
+        
+        .btn-secondary:hover {
+            background-color: rgba(67, 97, 238, 0.05);
+            transform: translateY(-2px);
+        }
+        
+        .btn-icon {
+            margin-right: var(--space-xs);
+        }
+        
+        /* Interview Layout */
+        .interview-container {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: var(--space-lg);
+            min-height: 100vh;
+            padding-top: var(--space-md);
+        }
+        
+        .interview-main {
+            display: flex;
+            flex-direction: column;
+        }
+        
+        .interview-sidebar {
+            border-left: 1px solid var(--light-gray);
+            padding-left: var(--space-lg);
+            display: flex;
+            flex-direction: column;
+        }
+        
+        /* Interview Header */
+        .interview-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: var(--space-sm);
+        }
+        
+        .timer {
+            font-size: 1.2rem;
+            font-weight: 700;
+            color: var(--primary);
+            background-color: rgba(67, 97, 238, 0.1);
+            padding: var(--space-xs) var(--space-sm);
+            border-radius: var(--radius-full);
+        }
+        
+        /* Question Section - Now in sidebar */
+        .question-section {
+            background-color: white;
+            border-radius: var(--radius-md);
+            padding: var(--space-md);
+            box-shadow: var(--shadow-sm);
+            margin-bottom: var(--space-lg);
+            min-height: 150px;
+        }
+        
+        .question-text {
+            font-size: 1.2rem;
+        }
+        
+        .question-actions {
+            display: flex;
+            justify-content: space-between;
+            margin-top: var(--space-md);
+        }
+        
+        /* Avatar Section - Now in main area */
+        .avatar-container {
+            height: 400px;
+            background-color: white;
+            border-radius: var(--radius-md);
+            box-shadow: var(--shadow-sm);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin-bottom: var(--space-lg);
+            position: relative;
+            overflow: hidden;
+            flex: 1;
+        }
+        
+        .avatar {
+            width: 100%;
+            height: 100%;
+            object-fit: contain;
+            display: none;
+        }
+        
+        .avatar-speaking {
+            display: block;
+            animation: speak 0.5s infinite alternate;
+        }
+        
+        @keyframes speak {
+            0% { transform: scale(1); }
+            100% { transform: scale(1.02); }
+        }
+        
+        /* Answer Section */
+        .answer-section {
+            background-color: white;
+            border-radius: var(--radius-md);
+            padding: var(--space-lg);
+            box-shadow: var(--shadow-sm);
+            flex: 1;
+            display: flex;
+            flex-direction: column;
+        }
+        
+        .answer-method {
+            display: flex;
+            gap: var(--space-sm);
+            margin-bottom: var(--space-md);
+        }
+        
+        .answer-tab {
+            padding: var(--space-sm) var(--space-md);
+            border-radius: var(--radius-sm);
+            cursor: pointer;
+            font-weight: 500;
+            transition: var(--transition);
+        }
+        
+        .answer-tab.active {
+            background-color: rgba(67, 97, 238, 0.1);
+            color: var(--primary);
+        }
+        
+        .answer-input {
+            width: 100%;
+            min-height: 150px;
+            padding: var(--space-md);
+            border: 1px solid var(--light-gray);
+            border-radius: var(--radius-sm);
+            font-family: var(--font-main);
+            font-size: 1rem;
+            resize: none;
+            flex: 1;
+        }
+        
+        .answer-input:focus {
+            outline: none;
+            border-color: var(--primary);
+            box-shadow: 0 0 0 3px rgba(67, 97, 238, 0.1);
+        }
+        
+        .recording-controls {
+            display: flex;
+            align-items: center;
+            gap: var(--space-md);
+            margin-top: var(--space-md);
+        }
+        
+        .recording-indicator {
+            display: flex;
+            align-items: center;
+            color: var(--danger);
+            font-weight: 500;
+        }
+        
+        .recording-indicator::before {
+            content: '';
+            width: 12px;
+            height: 12px;
+            background-color: var(--danger);
+            border-radius: 50%;
+            margin-right: var(--space-xs);
+            animation: pulse 1.5s infinite;
+        }
+        
+        @keyframes pulse {
+            0% { opacity: 1; }
+            50% { opacity: 0.3; }
+            100% { opacity: 1; }
+        }
+        
+        /* Video Preview */
+        .video-preview-container {
+            position: fixed;
+            width: 250px;
+            height: 180px;
+            z-index: 100;
+            cursor: move;
+            border-radius: var(--radius-md);
+            box-shadow: var(--shadow-lg);
+            background-color: var(--dark);
+            overflow: hidden;
+            transition: var(--transition);
+        }
+        
+        .video-preview {
+            width: 100%;
+            height: 100%;
+            position: relative;
+        }
+        
+        .video-preview video {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+        }
+        
+        .video-toggle-container {
+            position: fixed;
+            bottom: var(--space-lg);
+            right: var(--space-lg);
+            z-index: 101;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            width: 40px;
+            height: 40px;
+            background-color: var(--primary);
+            border-radius: 50%;
+            box-shadow: var(--shadow-md);
+            cursor: pointer;
+            transition: var(--transition);
+        }
+        
+        .video-toggle-container:hover {
+            transform: scale(1.1);
+        }
+        
+        .video-toggle {
+            color: white;
+            font-size: 1.2rem;
+        }
+        
+        .video-hidden .video-preview-container {
+            display: none;
+        }
+        
+        /* Face Detection Canvas */
+        .face-canvas {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+        }
+        
+        /* Warnings */
+        .warning-banner {
+            position: fixed;
+            bottom: var(--space-lg);
+            left: 50%;
+            transform: translateX(-50%);
+            background-color: var(--warning);
+            color: white;
+            padding: var(--space-sm) var(--space-md);
+            border-radius: var(--radius-sm);
+            box-shadow: var(--shadow-md);
+            z-index: 1000;
+            display: none;
+            max-width: 90%;
+            text-align: center;
+            animation: shake 0.5s;
+        }
+        
+        @keyframes shake {
+            0%, 100% { transform: translateX(-50%); }
+            20%, 60% { transform: translateX(calc(-50% - 5px)); }
+            40%, 80% { transform: translateX(calc(-50% + 5px)); }
+        }
+        
+        /* Responsive Design */
+        @media (max-width: 1200px) {
+            .interview-container {
+                grid-template-columns: 1fr;
+                padding-bottom: 200px;
+            }
+            
+            .interview-sidebar {
+                border-left: none;
+                padding-left: 0;
+                border-top: 1px solid var(--light-gray);
+                padding-top: var(--space-lg);
+            }
+            
+            .avatar-container {
+                height: 350px;
+            }
+        }
+        
+        @media (max-width: 768px) {
+            .question-actions {
+                flex-direction: column;
+                gap: var(--space-sm);
+            }
+            
+            .question-text {
+                font-size: 1.1rem;
+            }
+            
+            .avatar-container {
+                height: 250px;
+            }
+            
+            .interview-header {
+                flex-direction: column;
+                align-items: flex-start;
+                gap: var(--space-sm);
+            }
+            
+            .timer {
+                align-self: flex-end;
+            }
+            
+            .video-preview-container {
+                width: 200px;
+                height: 150px;
+            }
+        }
+        
+        @media (max-width: 576px) {
+            .container {
+                padding: 0 var(--space-sm);
+            }
+            
+            .question-container, .answer-section {
+                padding: var(--space-md);
+            }
+            
+            .avatar-container {
+                height: 200px;
+            }
+            
+            .answer-method {
+                flex-direction: column;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Interview Container -->
+    <div class="container">
+        <div class="interview-container">
+            <!-- Main Interview Area - Now contains avatar -->
+            <div class="interview-main">
+                <div class="avatar-container">
+                    <img src="https://school.mangoanimate.com/wp-content/uploads/2024/08/AI-talking-avatar.gif" alt="AI Interviewer" class="avatar" id="interviewerAvatar">
+                    <canvas class="face-canvas" id="faceCanvas"></canvas>
+                </div>
+                
+                <div class="answer-section">
+                    <div class="answer-method">
+                        <div class="answer-tab active" data-tab="text">Text Answer</div>
+                        <div class="answer-tab" data-tab="voice">Voice Answer</div>
+                    </div>
+                    
+                    <div id="textAnswerTab">
+                        <textarea class="answer-input" id="textAnswer" placeholder="Type your answer here..."></textarea>
+                    </div>
+                    
+                    <div id="voiceAnswerTab" style="display: none;">
+                        <textarea class="answer-input" id="voiceAnswer" placeholder="Your voice answer will appear here..." readonly></textarea>
+                        <div class="recording-controls">
+                            <button class="btn btn-primary" id="startRecordingBtn">
+                                <i class="fas fa-microphone btn-icon"></i> Start Recording
+                            </button>
+                            <button class="btn btn-secondary" id="stopRecordingBtn" disabled>
+                                <i class="fas fa-stop btn-icon"></i> Stop
+                            </button>
+                            <div class="recording-indicator" id="recordingIndicator" style="display: none;">
+                                Recording
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            
+            <!-- Sidebar (50% width) - Now contains question section -->
+            <div class="interview-sidebar">
+                <div class="interview-header">
+                    <h3 id="interviewRoleDisplay">Software Engineer Interview</h3>
+                    <div class="timer" id="interviewTimer">30:00</div>
+                </div>
+                
+                <div class="question-section">
+                    <div class="question-text" id="currentQuestion">
+                        Loading your first question...
+                    </div>
+                    
+                    <div class="question-actions">
+                        <button class="btn btn-secondary" id="skipQuestionBtn">
+                            <i class="fas fa-forward btn-icon"></i> Skip Question
+                        </button>
+                        <button class="btn btn-primary" id="nextQuestionBtn" disabled>
+                            <i class="fas fa-forward btn-icon"></i> Next Question
+                        </button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    
+    <!-- Video Preview (Draggable) -->
+    <div class="video-preview-container" id="videoPreviewContainer">
+        <div class="video-preview">
+            <video id="userVideo" autoplay muted></video>
+            <canvas id="videoCanvas"></canvas>
+        </div>
+    </div>
+    
+    <!-- Video Toggle Button -->
+    <div class="video-toggle-container" id="videoToggleContainer">
+        <i class="fas fa-video video-toggle" id="videoToggleBtn"></i>
+    </div>
+    
+    <!-- Warning Banners -->
+    <div class="warning-banner" id="noFaceWarning">
+        <i class="fas fa-exclamation-triangle"></i> No face detected! Please position yourself in front of the camera.
+    </div>
+    
+    <div class="warning-banner" id="eyeContactWarning">
+        <i class="fas fa-eye-slash"></i> Please maintain eye contact with the screen.
+    </div>
+    
+    <div class="warning-banner" id="multipleFacesWarning">
+        <i class="fas fa-users"></i> Multiple faces detected! Please ensure you're alone during the interview.
+    </div>
+    
+    <script>
+        // Interview Configuration (would normally come from URL params)
+        const interviewConfig = {
+            role: 'Software Engineer',
+            difficulty: 'intermediate',
+            duration: 30, // minutes
+            recordVideo: true
+        };
+        
+        // Question Database
+        const questionDatabase = {
+            'Software Engineer': {
+                'beginner': [
+                    "What is the difference between let, const and var in JavaScript?",
+                    "Explain what a closure is in JavaScript.",
+                    "What is the virtual DOM in React?",
+                    "How would you explain RESTful APIs to a non-technical person?",
+                    "What are the main principles of object-oriented programming?"
+                ],
+                'intermediate': [
+                    "How would you optimize a slow-performing React application?",
+                    "Explain the difference between authentication and authorization.",
+                    "Describe how you would implement a debounce function in JavaScript.",
+                    "What are the advantages of using TypeScript over JavaScript?",
+                    "How does the event loop work in Node.js?"
+                ],
+                'advanced': [
+                    "Explain how you would design a scalable microservices architecture.",
+                    "How would you handle state management in a large React application?",
+                    "Discuss the trade-offs between SQL and NoSQL databases.",
+                    "Explain the concept of eventual consistency with examples.",
+                    "How would you implement a real-time collaborative editing feature?"
+                ]
+            },
+            'Product Manager': {
+                'beginner': [
+                    "What makes a good product requirement document?",
+                    "How do you prioritize features in a product backlog?",
+                    "Explain the difference between a KPI and a metric.",
+                    "What is the role of a Product Manager in Agile development?",
+                    "How would you explain your product to a potential customer?"
+                ],
+                'intermediate': [
+                    "How would you validate a new product idea before development?",
+                    "Describe your approach to competitive analysis.",
+                    "How do you balance user needs with business goals?",
+                    "Explain how you would measure product success.",
+                    "What strategies would you use to increase user engagement?"
+                ],
+                'advanced': [
+                    "How would you pivot a product that's not meeting its KPIs?",
+                    "Describe your approach to building a product roadmap for a new market.",
+                    "How would you align product strategy with company vision?",
+                    "Explain how you would handle a major feature request from an important client.",
+                    "What metrics would you track for a marketplace product?"
+                ]
+            }
+        };
+        
+        // DOM Elements
+        const roleDisplay = document.getElementById('interviewRoleDisplay');
+        const timerDisplay = document.getElementById('interviewTimer');
+        const questionDisplay = document.getElementById('currentQuestion');
+        const nextQuestionBtn = document.getElementById('nextQuestionBtn');
+        const skipQuestionBtn = document.getElementById('skipQuestionBtn');
+        const textAnswerTab = document.getElementById('textAnswerTab');
+        const voiceAnswerTab = document.getElementById('voiceAnswerTab');
+        const answerTabs = document.querySelectorAll('.answer-tab');
+        const startRecordingBtn = document.getElementById('startRecordingBtn');
+        const stopRecordingBtn = document.getElementById('stopRecordingBtn');
+        const recordingIndicator = document.getElementById('recordingIndicator');
+        const voiceAnswer = document.getElementById('voiceAnswer');
+        const interviewerAvatar = document.getElementById('interviewerAvatar');
+        const videoPreviewContainer = document.getElementById('videoPreviewContainer');
+        const videoToggleBtn = document.getElementById('videoToggleBtn');
+        const videoToggleContainer = document.getElementById('videoToggleContainer');
+        const userVideo = document.getElementById('userVideo');
+        const videoCanvas = document.getElementById('videoCanvas');
+        const faceCanvas = document.getElementById('faceCanvas');
+        const noFaceWarning = document.getElementById('noFaceWarning');
+        const eyeContactWarning = document.getElementById('eyeContactWarning');
+        const multipleFacesWarning = document.getElementById('multipleFacesWarning');
+        
+        // Interview State
+        let currentQuestionIndex = 0;
+        let questions = [];
+        let timeLeft = interviewConfig.duration * 60; // in seconds
+        let timerInterval;
+        let mediaRecorder;
+        let audioChunks = [];
+        let speechRecognition;
+        let videoStream;
+        let faceDetectionInterval;
+        let lastFaceDetection = null;
+        let isDragging = false;
+        let dragOffsetX = 0;
+        let dragOffsetY = 0;
+        let isVideoHidden = false;
+        
+        // Initialize the interview
+        function initInterview() {
+            // Set role display
+            roleDisplay.textContent = `${interviewConfig.role} Interview (${interviewConfig.difficulty})`;
+            
+            // Load questions based on role and difficulty
+            questions = questionDatabase[interviewConfig.role][interviewConfig.difficulty];
+            
+            // Start timer
+            startTimer();
+            
+            // Display first question
+            displayQuestion();
+            
+            // Initialize voice answer tab
+            initVoiceAnswer();
+            
+            // Initialize video if enabled
+            if (interviewConfig.recordVideo) {
+                initVideoRecording();
+                initVideoDrag();
+            } else {
+                videoPreviewContainer.style.display = 'none';
+                videoToggleContainer.style.display = 'none';
+            }
+            
+            // Initialize face detection
+            initFaceDetection();
+        }
+        
+        // Start the interview timer
+        function startTimer() {
+            updateTimerDisplay();
+            timerInterval = setInterval(() => {
+                timeLeft--;
+                updateTimerDisplay();
+                
+                if (timeLeft <= 0) {
+                    clearInterval(timerInterval);
+                    endInterview();
+                }
+            }, 1000);
+        }
+        
+        // Update timer display
+        function updateTimerDisplay() {
+            const minutes = Math.floor(timeLeft / 60);
+            const seconds = timeLeft % 60;
+            timerDisplay.textContent = `${minutes.toString().padStart(2, '0')}:${seconds.toString().padStart(2, '0')}`;
+        }
+        
+        // Display current question
+        function displayQuestion() {
+            if (currentQuestionIndex < questions.length) {
+                questionDisplay.textContent = questions[currentQuestionIndex];
+                speakQuestion(questions[currentQuestionIndex]);
+                nextQuestionBtn.disabled = true;
+            } else {
+                endInterview();
+            }
+        }
+        
+        // Speak question using speech synthesis
+        function speakQuestion(question) {
+            // Show and animate GIF avatar
+            interviewerAvatar.style.display = 'block';
+            interviewerAvatar.classList.add('avatar-speaking');
+            
+            const utterance = new SpeechSynthesisUtterance(question);
+            utterance.rate = 0.9;
+            utterance.pitch = 0.8;
+            utterance.onend = () => {
+                interviewerAvatar.classList.remove('avatar-speaking');
+                interviewerAvatar.style.display = 'none';
+                nextQuestionBtn.disabled = false;
+            };
+            
+            speechSynthesis.speak(utterance);
+        }
+        
+        // Move to next question
+        function nextQuestion() {
+            currentQuestionIndex++;
+            displayQuestion();
+            
+            // Clear answer fields
+            document.getElementById('textAnswer').value = '';
+            voiceAnswer.value = '';
+        }
+        
+        // End interview
+        function endInterview() {
+            clearInterval(timerInterval);
+            clearInterval(faceDetectionInterval);
+            
+            if (mediaRecorder && mediaRecorder.state !== 'inactive') {
+                mediaRecorder.stop();
+            }
+            
+            if (videoStream) {
+                videoStream.getTracks().forEach(track => track.stop());
+            }
+            
+            alert('Interview completed! Redirecting to results...');
+            // In a real app, you would redirect to results page
+            // window.location.href = 'results.html';
+        }
+        
+        // Initialize voice answer functionality
+        function initVoiceAnswer() {
+            // Check if browser supports speech recognition
+            if ('webkitSpeechRecognition' in window) {
+                speechRecognition = new webkitSpeechRecognition();
+                speechRecognition.continuous = true;
+                speechRecognition.interimResults = true;
+                
+                speechRecognition.onresult = (event) => {
+                    const transcript = Array.from(event.results)
+                        .map(result => result[0])
+                        .map(result => result.transcript)
+                        .join('');
+                    
+                    voiceAnswer.value = transcript;
+                };
+                
+                speechRecognition.onerror = (event) => {
+                    console.error('Speech recognition error', event.error);
+                };
+            } else {
+                // Disable voice tab if not supported
+                document.querySelector('.answer-tab[data-tab="voice"]').style.display = 'none';
+            }
+        }
+        
+        // Start voice recording
+        function startVoiceRecording() {
+            if (speechRecognition) {
+                speechRecognition.start();
+                startRecordingBtn.disabled = true;
+                stopRecordingBtn.disabled = false;
+                recordingIndicator.style.display = 'flex';
+            }
+        }
+        
+        // Stop voice recording
+        function stopVoiceRecording() {
+            if (speechRecognition) {
+                speechRecognition.stop();
+                startRecordingBtn.disabled = false;
+                stopRecordingBtn.disabled = true;
+                recordingIndicator.style.display = 'none';
+            }
+        }
+        
+        // Initialize video recording
+        async function initVideoRecording() {
+            try {
+                videoStream = await navigator.mediaDevices.getUserMedia({ 
+                    video: true, 
+                    audio: false 
+                });
+                
+                userVideo.srcObject = videoStream;
+                
+                // Load face detection models
+                await faceapi.nets.tinyFaceDetector.loadFromUri('https://justadudewhohacks.github.io/face-api.js/models');
+                await faceapi.nets.faceLandmark68Net.loadFromUri('https://justadudewhohacks.github.io/face-api.js/models');
+                
+                // Start face detection
+                startFaceDetection();
+                
+            } catch (err) {
+                console.error('Error accessing camera:', err);
+                videoPreviewContainer.style.display = 'none';
+                videoToggleContainer.style.display = 'none';
+            }
+        }
+        
+        // Initialize video drag functionality
+        function initVideoDrag() {
+            videoPreviewContainer.addEventListener('mousedown', (e) => {
+                isDragging = true;
+                dragOffsetX = e.clientX - videoPreviewContainer.getBoundingClientRect().left;
+                dragOffsetY = e.clientY - videoPreviewContainer.getBoundingClientRect().top;
+                videoPreviewContainer.style.cursor = 'grabbing';
+            });
+            
+            document.addEventListener('mousemove', (e) => {
+                if (!isDragging) return;
+                
+                const x = e.clientX - dragOffsetX;
+                const y = e.clientY - dragOffsetY;
+                
+                videoPreviewContainer.style.left = `${x}px`;
+                videoPreviewContainer.style.top = `${y}px`;
+            });
+            
+            document.addEventListener('mouseup', () => {
+                isDragging = false;
+                videoPreviewContainer.style.cursor = 'move';
+            });
+            
+            // Touch support
+            videoPreviewContainer.addEventListener('touchstart', (e) => {
+                isDragging = true;
+                const touch = e.touches[0];
+                dragOffsetX = touch.clientX - videoPreviewContainer.getBoundingClientRect().left;
+                dragOffsetY = touch.clientY - videoPreviewContainer.getBoundingClientRect().top;
+                e.preventDefault();
+            });
+            
+            document.addEventListener('touchmove', (e) => {
+                if (!isDragging) return;
+                
+                const touch = e.touches[0];
+                const x = touch.clientX - dragOffsetX;
+                const y = touch.clientY - dragOffsetY;
+                
+                videoPreviewContainer.style.left = `${x}px`;
+                videoPreviewContainer.style.top = `${y}px`;
+                e.preventDefault();
+            });
+            
+            document.addEventListener('touchend', () => {
+                isDragging = false;
+            });
+            
+            // Position initially
+            videoPreviewContainer.style.left = '20px';
+            videoPreviewContainer.style.top = '20px';
+        }
+        
+        // Toggle video preview visibility
+        function toggleVideoPreview() {
+            isVideoHidden = !isVideoHidden;
+            
+            if (isVideoHidden) {
+                videoPreviewContainer.style.display = 'none';
+                videoToggleBtn.classList.remove('fa-video');
+                videoToggleBtn.classList.add('fa-video-slash');
+            } else {
+                videoPreviewContainer.style.display = 'block';
+                videoToggleBtn.classList.remove('fa-video-slash');
+                videoToggleBtn.classList.add('fa-video');
+            }
+        }
+        
+        // Start face detection
+        function startFaceDetection() {
+            const video = userVideo;
+            const canvas = videoCanvas;
+            const displaySize = { width: video.width, height: video.height };
+            
+            faceapi.matchDimensions(canvas, displaySize);
+            
+            faceDetectionInterval = setInterval(async () => {
+                const detections = await faceapi.detectAllFaces(
+                    video, 
+                    new faceapi.TinyFaceDetectorOptions()
+                ).withFaceLandmarks();
+                
+                // Clear canvas
+                const context = canvas.getContext('2d');
+                context.clearRect(0, 0, canvas.width, canvas.height);
+                
+                // Resize detections to display size
+                const resizedDetections = faceapi.resizeResults(detections, displaySize);
+                
+                // Draw detections
+                faceapi.draw.drawDetections(canvas, resizedDetections);
+                faceapi.draw.drawFaceLandmarks(canvas, resizedDetections);
+                
+                // Analyze face positions
+                analyzeFacePositions(resizedDetections);
+                
+                lastFaceDetection = detections;
+            }, 500);
+        }
+        
+        // Analyze face positions for warnings
+        function analyzeFacePositions(detections) {
+            // No face detected
+            if (detections.length === 0) {
+                noFaceWarning.style.display = 'block';
+                eyeContactWarning.style.display = 'none';
+                multipleFacesWarning.style.display = 'none';
+                return;
+            }
+            
+            // Multiple faces detected
+            if (detections.length > 1) {
+                multipleFacesWarning.style.display = 'block';
+                noFaceWarning.style.display = 'none';
+                eyeContactWarning.style.display = 'none';
+                return;
+            }
+            
+            // Single face detected
+            noFaceWarning.style.display = 'none';
+            multipleFacesWarning.style.display = 'none';
+            
+            // Check eye contact (simplified)
+            const landmarks = detections[0].landmarks;
+            const leftEye = landmarks.getLeftEye();
+            const rightEye = landmarks.getRightEye();
+            
+            // Calculate eye direction (simplified approach)
+            const leftEyeDirection = leftEye[0].x - leftEye[3].x;
+            const rightEyeDirection = rightEye[0].x - rightEye[3].x;
+            const avgEyeDirection = (leftEyeDirection + rightEyeDirection) / 2;
+            
+            // Threshold values may need adjustment
+            const lookingThreshold = 10;
+            
+            if (Math.abs(avgEyeDirection) < lookingThreshold) {
+                eyeContactWarning.style.display = 'block';
+            } else {
+                eyeContactWarning.style.display = 'none';
+            }
+        }
+        
+        // Event Listeners
+        nextQuestionBtn.addEventListener('click', nextQuestion);
+        skipQuestionBtn.addEventListener('click', nextQuestion);
+        
+        startRecordingBtn.addEventListener('click', startVoiceRecording);
+        stopRecordingBtn.addEventListener('click', stopVoiceRecording);
+        
+        answerTabs.forEach(tab => {
+            tab.addEventListener('click', () => {
+                // Set active tab
+                answerTabs.forEach(t => t.classList.remove('active'));
+                tab.classList.add('active');
+                
+                // Show corresponding content
+                if (tab.dataset.tab === 'text') {
+                    textAnswerTab.style.display = 'block';
+                    voiceAnswerTab.style.display = 'none';
+                    stopVoiceRecording();
+                } else {
+                    textAnswerTab.style.display = 'none';
+                    voiceAnswerTab.style.display = 'block';
+                }
+            });
+        });
+        
+        videoToggleContainer.addEventListener('click', toggleVideoPreview);
+        
+        // Initialize the interview when page loads
+        window.addEventListener('load', initInterview);
+    </script>
+</body>
+</html>

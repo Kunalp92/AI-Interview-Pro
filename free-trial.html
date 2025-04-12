@@ -1,0 +1,985 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Start Free Trial | AI Interview Pro</title>
+    <meta name="description" content="Start your 7-day free trial of AI Interview Pro today">
+    <!-- Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Poppins:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <!-- Icons -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        :root {
+            /* Color palette */
+            --primary: #4361ee;
+            --primary-dark: #3a56d4;
+            --secondary: #3f37c9;
+            --accent: #4895ef;
+            --dark: #1a1a2e;
+            --light: #f8f9fa;
+            --gray: #6c757d;
+            --light-gray: #e9ecef;
+            --success: #4cc9f0;
+            --warning: #f72585;
+            
+            /* Typography */
+            --font-main: 'Inter', sans-serif;
+            --font-heading: 'Poppins', sans-serif;
+            
+            /* Spacing */
+            --space-xs: 0.5rem;
+            --space-sm: 1rem;
+            --space-md: 1.5rem;
+            --space-lg: 2rem;
+            --space-xl: 3rem;
+            
+            /* Shadows */
+            --shadow-sm: 0 1px 3px rgba(0,0,0,0.12);
+            --shadow-md: 0 4px 6px rgba(0,0,0,0.1);
+            --shadow-lg: 0 10px 25px rgba(0,0,0,0.1);
+            
+            /* Border radius */
+            --radius-sm: 4px;
+            --radius-md: 8px;
+            --radius-lg: 12px;
+            --radius-full: 9999px;
+            
+            /* Transitions */
+            --transition: all 0.3s cubic-bezier(0.25, 0.8, 0.25, 1);
+        }
+        
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        
+        body {
+            font-family: var(--font-main);
+            color: var(--dark);
+            background-color: var(--light);
+            line-height: 1.6;
+        }
+        
+        /* Typography */
+        h1, h2, h3, h4, h5, h6 {
+            font-family: var(--font-heading);
+            font-weight: 600;
+            line-height: 1.2;
+            margin-bottom: var(--space-md);
+        }
+        
+        h1 { font-size: 2.5rem; }
+        h2 { font-size: 2rem; }
+        h3 { font-size: 1.75rem; }
+        h4 { font-size: 1.5rem; }
+        
+        p {
+            margin-bottom: var(--space-md);
+            color: var(--gray);
+        }
+        
+        a {
+            text-decoration: none;
+            color: inherit;
+            transition: var(--transition);
+        }
+        
+        /* Layout */
+        .container {
+            width: 100%;
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 var(--space-md);
+        }
+        
+        section {
+            padding: var(--space-xl) 0;
+        }
+        
+        /* Buttons */
+        .btn {
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            padding: var(--space-sm) var(--space-lg);
+            border-radius: var(--radius-full);
+            font-weight: 500;
+            font-size: 1rem;
+            cursor: pointer;
+            transition: var(--transition);
+            border: none;
+            white-space: nowrap;
+        }
+        
+        .btn-primary {
+            background-color: var(--primary);
+            color: white;
+            box-shadow: 0 4px 14px rgba(67, 97, 238, 0.3);
+        }
+        
+        .btn-primary:hover {
+            background-color: var(--primary-dark);
+            transform: translateY(-2px);
+            box-shadow: 0 6px 20px rgba(67, 97, 238, 0.4);
+        }
+        
+        .btn-secondary {
+            background-color: white;
+            color: var(--primary);
+            border: 1px solid var(--primary);
+        }
+        
+        .btn-secondary:hover {
+            background-color: rgba(67, 97, 238, 0.05);
+            transform: translateY(-2px);
+        }
+        
+        .btn-icon {
+            margin-right: var(--space-xs);
+        }
+        
+        /* Header */
+        header {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            background-color: white;
+            box-shadow: var(--shadow-sm);
+            z-index: 1000;
+            padding: var(--space-sm) 0;
+        }
+        
+        .navbar {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+        
+        .logo {
+            display: flex;
+            align-items: center;
+            font-weight: 700;
+            font-size: 1.25rem;
+            color: var(--dark);
+        }
+        
+        .logo-icon {
+            color: var(--primary);
+            margin-right: var(--space-xs);
+            font-size: 1.5rem;
+        }
+        
+        .nav-links {
+            display: flex;
+            list-style: none;
+        }
+        
+        .nav-links li {
+            margin-left: var(--space-lg);
+        }
+        
+        .nav-links a {
+            font-weight: 500;
+            color: var(--dark);
+            position: relative;
+            padding: var(--space-xs) 0;
+        }
+        
+        .nav-links a::after {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            width: 0;
+            height: 2px;
+            background-color: var(--primary);
+            transition: var(--transition);
+        }
+        
+        .nav-links a:hover::after {
+            width: 100%;
+        }
+        
+        .nav-links a:hover {
+            color: var(--primary);
+        }
+        
+        .mobile-menu-btn {
+            display: none;
+            background: none;
+            border: none;
+            font-size: 1.5rem;
+            color: var(--dark);
+            cursor: pointer;
+        }
+        
+        /* Trial Hero Section */
+        .trial-hero {
+            padding-top: 6rem;
+            background: linear-gradient(135deg, #f5f7ff 0%, #e6ebfa 100%);
+            text-align: center;
+        }
+        
+        .trial-hero-content {
+            max-width: 800px;
+            margin: 0 auto;
+            padding: var(--space-xl) 0;
+        }
+        
+        .trial-hero h1 {
+            margin-bottom: var(--space-sm);
+        }
+        
+        .trial-hero p {
+            font-size: 1.1rem;
+            margin-bottom: var(--space-lg);
+        }
+        
+        /* Trial Form Section */
+        .trial-form-section {
+            background-color: white;
+        }
+        
+        .trial-form-container {
+            display: flex;
+            flex-wrap: wrap;
+            gap: var(--space-xl);
+            max-width: 1000px;
+            margin: 0 auto;
+        }
+        
+        .trial-features {
+            flex: 1;
+            min-width: 300px;
+        }
+        
+        .trial-features h2 {
+            margin-bottom: var(--space-lg);
+            color: var(--primary);
+        }
+        
+        .feature-list {
+            list-style: none;
+        }
+        
+        .feature-item {
+            display: flex;
+            align-items: flex-start;
+            margin-bottom: var(--space-md);
+        }
+        
+        .feature-icon {
+            color: var(--primary);
+            margin-right: var(--space-sm);
+            font-size: 1.2rem;
+            margin-top: 3px;
+        }
+        
+        .feature-text h3 {
+            font-size: 1.1rem;
+            margin-bottom: var(--space-xs);
+        }
+        
+        .feature-text p {
+            font-size: 0.95rem;
+            margin-bottom: 0;
+        }
+        
+        .trial-form {
+            flex: 1;
+            min-width: 300px;
+            background-color: white;
+            border-radius: var(--radius-md);
+            padding: var(--space-lg);
+            box-shadow: var(--shadow-md);
+            border: 1px solid var(--light-gray);
+        }
+        
+        .form-header {
+            text-align: center;
+            margin-bottom: var(--space-lg);
+        }
+        
+        .form-header h2 {
+            color: var(--primary);
+            margin-bottom: var(--space-sm);
+        }
+        
+        .form-group {
+            margin-bottom: var(--space-md);
+        }
+        
+        .form-label {
+            display: block;
+            margin-bottom: var(--space-xs);
+            font-weight: 500;
+            color: var(--dark);
+        }
+        
+        .form-control {
+            width: 100%;
+            padding: var(--space-sm);
+            border: 1px solid var(--light-gray);
+            border-radius: var(--radius-sm);
+            font-family: var(--font-main);
+            font-size: 1rem;
+            transition: var(--transition);
+        }
+        
+        .form-control:focus {
+            outline: none;
+            border-color: var(--primary);
+            box-shadow: 0 0 0 3px rgba(67, 97, 238, 0.1);
+        }
+        
+        .form-footer {
+            margin-top: var(--space-lg);
+            text-align: center;
+        }
+        
+        .form-note {
+            font-size: 0.85rem;
+            color: var(--gray);
+            margin-top: var(--space-sm);
+        }
+        
+        .divider {
+            display: flex;
+            align-items: center;
+            margin: var(--space-lg) 0;
+            color: var(--gray);
+            font-size: 0.9rem;
+        }
+        
+        .divider::before, .divider::after {
+            content: '';
+            flex: 1;
+            border-bottom: 1px solid var(--light-gray);
+        }
+        
+        .divider::before {
+            margin-right: var(--space-sm);
+        }
+        
+        .divider::after {
+            margin-left: var(--space-sm);
+        }
+        
+        .social-login {
+            display: flex;
+            gap: var(--space-sm);
+            margin-bottom: var(--space-md);
+        }
+        
+        .social-btn {
+            flex: 1;
+            padding: var(--space-sm);
+            border-radius: var(--radius-sm);
+            border: 1px solid var(--light-gray);
+            background-color: white;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            cursor: pointer;
+            transition: var(--transition);
+        }
+        
+        .social-btn:hover {
+            background-color: var(--light);
+        }
+        
+        .social-icon {
+            margin-right: var(--space-xs);
+            font-size: 1.2rem;
+        }
+        
+        .google-btn {
+            color: #db4437;
+        }
+        
+        .linkedin-btn {
+            color: #0077b5;
+        }
+        
+        /* Trial Benefits Section */
+        .trial-benefits {
+            background-color: var(--light);
+        }
+        
+        .benefits-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: var(--space-lg);
+            margin-top: var(--space-xl);
+        }
+        
+        .benefit-card {
+            background-color: white;
+            border-radius: var(--radius-md);
+            padding: var(--space-lg);
+            box-shadow: var(--shadow-sm);
+            transition: var(--transition);
+            text-align: center;
+        }
+        
+        .benefit-card:hover {
+            transform: translateY(-5px);
+            box-shadow: var(--shadow-md);
+        }
+        
+        .benefit-icon {
+            width: 60px;
+            height: 60px;
+            border-radius: var(--radius-md);
+            background: linear-gradient(135deg, rgba(67, 97, 238, 0.1) 0%, rgba(72, 149, 239, 0.1) 100%);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin: 0 auto var(--space-md);
+            color: var(--primary);
+            font-size: 1.5rem;
+        }
+        
+        /* FAQ Section */
+        .faq-section {
+            background-color: white;
+        }
+        
+        .faq-container {
+            max-width: 800px;
+            margin: 0 auto;
+        }
+        
+        .faq-item {
+            margin-bottom: var(--space-sm);
+            border: 1px solid var(--light-gray);
+            border-radius: var(--radius-sm);
+            overflow: hidden;
+        }
+        
+        .faq-question {
+            padding: var(--space-md);
+            background-color: var(--light);
+            font-weight: 500;
+            cursor: pointer;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+        
+        .faq-answer {
+            padding: 0 var(--space-md);
+            max-height: 0;
+            overflow: hidden;
+            transition: max-height 0.3s ease, padding 0.3s ease;
+        }
+        
+        .faq-item.active .faq-answer {
+            padding: var(--space-md);
+            max-height: 300px;
+        }
+        
+        .faq-toggle {
+            transition: transform 0.3s ease;
+        }
+        
+        .faq-item.active .faq-toggle {
+            transform: rotate(180deg);
+        }
+        
+        /* Footer */
+        footer {
+            background-color: var(--dark);
+            color: white;
+            padding: var(--space-xl) 0 var(--space-md);
+        }
+        
+        .footer-content {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: var(--space-xl);
+            margin-bottom: var(--space-xl);
+        }
+        
+        .footer-logo {
+            font-size: 1.5rem;
+            font-weight: 700;
+            margin-bottom: var(--space-md);
+            display: inline-flex;
+            align-items: center;
+        }
+        
+        .footer-logo-icon {
+            color: var(--accent);
+            margin-right: var(--space-xs);
+        }
+        
+        .footer-about p {
+            color: rgba(255, 255, 255, 0.7);
+            margin-bottom: var(--space-md);
+        }
+        
+        .social-links {
+            display: flex;
+            gap: var(--space-md);
+        }
+        
+        .social-link {
+            width: 40px;
+            height: 40px;
+            border-radius: 50%;
+            background-color: rgba(255, 255, 255, 0.1);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            transition: var(--transition);
+        }
+        
+        .social-link:hover {
+            background-color: var(--primary);
+            transform: translateY(-3px);
+        }
+        
+        .footer-links h3 {
+            color: white;
+            margin-bottom: var(--space-md);
+            font-size: 1.25rem;
+        }
+        
+        .footer-links ul {
+            list-style: none;
+        }
+        
+        .footer-links li {
+            margin-bottom: var(--space-sm);
+        }
+        
+        .footer-links a {
+            color: rgba(255, 255, 255, 0.7);
+            transition: var(--transition);
+        }
+        
+        .footer-links a:hover {
+            color: white;
+            padding-left: var(--space-xs);
+        }
+        
+        .footer-bottom {
+            text-align: center;
+            padding-top: var(--space-md);
+            border-top: 1px solid rgba(255, 255, 255, 0.1);
+            color: rgba(255, 255, 255, 0.5);
+            font-size: 0.875rem;
+        }
+        
+        /* Responsive Design */
+        @media (max-width: 768px) {
+            h1 { font-size: 2rem; }
+            h2 { font-size: 1.75rem; }
+            
+            .mobile-menu-btn {
+                display: block;
+            }
+            
+            .nav-links {
+                position: fixed;
+                top: 70px;
+                left: -100%;
+                width: 100%;
+                height: calc(100vh - 70px);
+                background-color: white;
+                flex-direction: column;
+                align-items: center;
+                padding: var(--space-xl) 0;
+                transition: var(--transition);
+                box-shadow: var(--shadow-md);
+            }
+            
+            .nav-links.active {
+                left: 0;
+            }
+            
+            .nav-links li {
+                margin: var(--space-sm) 0;
+            }
+            
+            .trial-form-container {
+                flex-direction: column;
+            }
+            
+            .social-login {
+                flex-direction: column;
+            }
+        }
+        
+        @media (max-width: 576px) {
+            section {
+                padding: var(--space-lg) 0;
+            }
+            
+            .trial-hero-content {
+                padding: var(--space-lg) 0;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Header -->
+    <header>
+        <div class="container">
+            <nav class="navbar">
+                <a href="index.html" class="logo">
+                    <span class="logo-icon"><i class="fas fa-robot"></i></span>
+                    <span>AI Interview Pro</span>
+                </a>
+                
+                <ul class="nav-links">
+                    <li><a href="index.html">Home</a></li>
+                    <li><a href="index.html#features">Features</a></li>
+                    <li><a href="index.html#how-it-works">How It Works</a></li>
+                    <li><a href="index.html#testimonials">Testimonials</a></li>
+                    <li><a href="#">Pricing</a></li>
+                </ul>
+                
+                <div class="auth-buttons">
+                    <a href="login.html" class="btn btn-secondary">Login</a>
+                    <a href="#" class="btn btn-primary">Sign Up</a>
+                </div>
+                
+                <button class="mobile-menu-btn">
+                    <i class="fas fa-bars"></i>
+                </button>
+            </nav>
+        </div>
+    </header>
+
+    <!-- Trial Hero Section -->
+    <section class="trial-hero">
+        <div class="container">
+            <div class="trial-hero-content">
+                <h1>Start Your 7-Day Free Trial</h1>
+                <p>No credit card required. Get full access to all features to experience how AI Interview Pro can help you ace your next interview.</p>
+                <a href="#trial-form" class="btn btn-primary btn-lg">
+                    <i class="fas fa-play btn-icon"></i> Start Free Trial
+                </a>
+            </div>
+        </div>
+    </section>
+
+    <!-- Trial Form Section -->
+    <section class="trial-form-section" id="trial-form">
+        <div class="container">
+            <div class="trial-form-container">
+                <div class="trial-features">
+                    <h2>What's Included in Your Free Trial</h2>
+                    <ul class="feature-list">
+                        <li class="feature-item">
+                            <span class="feature-icon"><i class="fas fa-check-circle"></i></span>
+                            <div class="feature-text">
+                                <h3>Full Access to All Features</h3>
+                                <p>Experience everything our platform has to offer with no limitations</p>
+                            </div>
+                        </li>
+                        <li class="feature-item">
+                            <span class="feature-icon"><i class="fas fa-check-circle"></i></span>
+                            <div class="feature-text">
+                                <h3>Unlimited Mock Interviews</h3>
+                                <p>Practice as much as you want with our AI interview simulator</p>
+                            </div>
+                        </li>
+                        <li class="feature-item">
+                            <span class="feature-icon"><i class="fas fa-check-circle"></i></span>
+                            <div class="feature-text">
+                                <h3>Detailed Performance Reports</h3>
+                                <p>Get comprehensive feedback on your interview skills</p>
+                            </div>
+                        </li>
+                        <li class="feature-item">
+                            <span class="feature-icon"><i class="fas fa-check-circle"></i></span>
+                            <div class="feature-text">
+                                <h3>50+ Job Role Simulations</h3>
+                                <p>Practice for your specific target role with customized questions</p>
+                            </div>
+                        </li>
+                        <li class="feature-item">
+                            <span class="feature-icon"><i class="fas fa-check-circle"></i></span>
+                            <div class="feature-text">
+                                <h3>Cancel Anytime</h3>
+                                <p>No obligations - cancel before trial ends with no charges</p>
+                            </div>
+                        </li>
+                    </ul>
+                </div>
+                
+                <form class="trial-form">
+                    <div class="form-header">
+                        <h2>Create Your Account</h2>
+                        <p>Start your free trial in just 30 seconds</p>
+                    </div>
+                    
+                    <div class="social-login">
+                        <button type="button" class="social-btn google-btn">
+                            <i class="fab fa-google social-icon"></i>
+                            Google
+                        </button>
+                        <button type="button" class="social-btn linkedin-btn">
+                            <i class="fab fa-linkedin-in social-icon"></i>
+                            LinkedIn
+                        </button>
+                    </div>
+                    
+                    <div class="divider">or</div>
+                    
+                    <div class="form-group">
+                        <label for="fullname" class="form-label">Full Name</label>
+                        <input type="text" id="fullname" class="form-control" placeholder="Enter your full name" required>
+                    </div>
+                    
+                    <div class="form-group">
+                        <label for="email" class="form-label">Email Address</label>
+                        <input type="email" id="email" class="form-control" placeholder="Enter your email" required>
+                    </div>
+                    
+                    <div class="form-group">
+                        <label for="password" class="form-label">Create Password</label>
+                        <input type="password" id="password" class="form-control" placeholder="Create a password" required>
+                    </div>
+                    
+                    <div class="form-group">
+                        <label for="job-role" class="form-label">Primary Job Role</label>
+                        <select id="job-role" class="form-control" required>
+                            <option value="">Select your target role</option>
+                            <option value="software-engineer">Software Engineer</option>
+                            <option value="product-manager">Product Manager</option>
+                            <option value="data-scientist">Data Scientist</option>
+                            <option value="ux-designer">UX Designer</option>
+                            <option value="business-analyst">Business Analyst</option>
+                            <option value="other">Other</option>
+                        </select>
+                    </div>
+                    
+                    <div class="form-group">
+                        <div class="form-check">
+                            <input type="checkbox" id="terms" class="form-check-input" required>
+                            <label for="terms" class="form-check-label">I agree to the <a href="#">Terms of Service</a> and <a href="#">Privacy Policy</a></label>
+                        </div>
+                    </div>
+                    
+                    <div class="form-footer">
+                        <button type="submit" class="btn btn-primary btn-block">
+                            Start My Free Trial
+                        </button>
+                        <p class="form-note">No credit card required. Cancel anytime.</p>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </section>
+
+    <!-- Trial Benefits Section -->
+    <section class="trial-benefits">
+        <div class="container">
+            <div class="section-header">
+                <h2 class="section-title">Why Professionals Choose AI Interview Pro</h2>
+                <p class="section-subtitle">
+                    Join thousands of users who improved their interview skills with our platform
+                </p>
+            </div>
+            
+            <div class="benefits-grid">
+                <div class="benefit-card">
+                    <div class="benefit-icon">
+                        <i class="fas fa-chart-line"></i>
+                    </div>
+                    <h3>94% Success Rate</h3>
+                    <p>94% of users report getting more interview callbacks after practicing with our platform</p>
+                </div>
+                
+                <div class="benefit-card">
+                    <div class="benefit-icon">
+                        <i class="fas fa-clock"></i>
+                    </div>
+                    <h3>20+ Hours Saved</h3>
+                    <p>Average user saves over 20 hours of preparation time with our targeted approach</p>
+                </div>
+                
+                <div class="benefit-card">
+                    <div class="benefit-icon">
+                        <i class="fas fa-building"></i>
+                    </div>
+                    <h3>500+ Companies</h3>
+                    <p>Our question database covers interview patterns from top tech companies worldwide</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- FAQ Section -->
+    <section class="faq-section">
+        <div class="container">
+            <div class="section-header">
+                <h2 class="section-title">Frequently Asked Questions</h2>
+                <p class="section-subtitle">
+                    Everything you need to know about the free trial
+                </p>
+            </div>
+            
+            <div class="faq-container">
+                <div class="faq-item">
+                    <div class="faq-question">
+                        <span>What's included in the free trial?</span>
+                        <i class="fas fa-chevron-down faq-toggle"></i>
+                    </div>
+                    <div class="faq-answer">
+                        <p>Your free trial includes full access to all features of AI Interview Pro, including unlimited mock interviews, detailed feedback reports, face and voice analysis, and access to all job role simulations. You'll experience everything our premium members get.</p>
+                    </div>
+                </div>
+                
+                <div class="faq-item">
+                    <div class="faq-question">
+                        <span>Do I need a credit card to sign up?</span>
+                        <i class="fas fa-chevron-down faq-toggle"></i>
+                    </div>
+                    <div class="faq-answer">
+                        <p>No, we don't require a credit card to start your free trial. You can sign up and enjoy the full experience without entering any payment information.</p>
+                    </div>
+                </div>
+                
+                <div class="faq-item">
+                    <div class="faq-question">
+                        <span>What happens after my trial ends?</span>
+                        <i class="fas fa-chevron-down faq-toggle"></i>
+                    </div>
+                    <div class="faq-answer">
+                        <p>After your 7-day trial, you'll need to choose a subscription plan to continue using AI Interview Pro. We'll send you reminders before your trial ends so you can decide whether to continue or cancel.</p>
+                    </div>
+                </div>
+                
+                <div class="faq-item">
+                    <div class="faq-question">
+                        <span>Can I extend my free trial?</span>
+                        <i class="fas fa-chevron-down faq-toggle"></i>
+                    </div>
+                    <div class="faq-answer">
+                        <p>Our standard trial is 7 days, but we occasionally offer extended trials during special promotions. Contact our support team if you need more time to evaluate our platform.</p>
+                    </div>
+                </div>
+                
+                <div class="faq-item">
+                    <div class="faq-question">
+                        <span>How do I cancel my trial?</span>
+                        <i class="fas fa-chevron-down faq-toggle"></i>
+                    </div>
+                    <div class="faq-answer">
+                        <p>You can cancel anytime during your trial by going to your Account Settings and clicking "Cancel Trial." You'll continue to have access until the trial period ends.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer>
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-about">
+                    <a href="index.html" class="footer-logo">
+                        <span class="footer-logo-icon"><i class="fas fa-robot"></i></span>
+                        <span>AI Interview Pro</span>
+                    </a>
+                    <p>
+                        The most advanced AI-powered interview preparation platform to help you land your dream job.
+                    </p>
+                    <div class="social-links">
+                        <a href="#" class="social-link"><i class="fab fa-twitter"></i></a>
+                        <a href="#" class="social-link"><i class="fab fa-linkedin-in"></i></a>
+                        <a href="#" class="social-link"><i class="fab fa-facebook-f"></i></a>
+                        <a href="#" class="social-link"><i class="fab fa-instagram"></i></a>
+                    </div>
+                </div>
+                
+                <div class="footer-links">
+                    <h3>Product</h3>
+                    <ul>
+                        <li><a href="#">Features</a></li>
+                        <li><a href="#">Pricing</a></li>
+                        <li><a href="#">Use Cases</a></li>
+                        <li><a href="#">Demo</a></li>
+                    </ul>
+                </div>
+                
+                <div class="footer-links">
+                    <h3>Company</h3>
+                    <ul>
+                        <li><a href="#">About Us</a></li>
+                        <li><a href="#">Careers</a></li>
+                        <li><a href="#">Blog</a></li>
+                        <li><a href="#">Press</a></li>
+                    </ul>
+                </div>
+                
+                <div class="footer-links">
+                    <h3>Support</h3>
+                    <ul>
+                        <li><a href="#">Help Center</a></li>
+                        <li><a href="#">Contact Us</a></li>
+                        <li><a href="#">Privacy Policy</a></li>
+                        <li><a href="#">Terms of Service</a></li>
+                    </ul>
+                </div>
+            </div>
+            
+            <div class="footer-bottom">
+                <p>&copy; 2023 AI Interview Pro. All rights reserved.</p>
+            </div>
+        </div>
+    </footer>
+
+    <script>
+        // Mobile Menu Toggle
+        const mobileMenuBtn = document.querySelector('.mobile-menu-btn');
+        const navLinks = document.querySelector('.nav-links');
+        
+        mobileMenuBtn.addEventListener('click', () => {
+            navLinks.classList.toggle('active');
+            mobileMenuBtn.innerHTML = navLinks.classList.contains('active') 
+                ? '<i class="fas fa-times"></i>' 
+                : '<i class="fas fa-bars"></i>';
+        });
+        
+        // FAQ Accordion
+        const faqItems = document.querySelectorAll('.faq-item');
+        
+        faqItems.forEach(item => {
+            const question = item.querySelector('.faq-question');
+            
+            question.addEventListener('click', () => {
+                // Close all other items
+                faqItems.forEach(otherItem => {
+                    if (otherItem !== item && otherItem.classList.contains('active')) {
+                        otherItem.classList.remove('active');
+                    }
+                });
+                
+                // Toggle current item
+                item.classList.toggle('active');
+            });
+        });
+        
+        // Form Submission
+        const trialForm = document.querySelector('.trial-form');
+        
+        trialForm.addEventListener('submit', (e) => {
+            e.preventDefault();
+            // In a real app, you would handle form submission here
+            alert('Thank you for signing up!');
+             window.location.href = 'interview-setup.html';
+        });
+    </script>
+</body>
+</html>
